@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .gallery-container {
+            width: 90%;
+            margin: 30px auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .gallery-filter {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .gallery-filter button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            background-color: #333;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .gallery-filter button.active {
+            background-color: #555;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+        }
+
+        .gallery-item {
+            flex-basis: calc(33.33% - 30px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: transform 0.2s;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .gallery-item h3 {
+            text-align: center;
+            padding: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .gallery-item {
+                flex-basis: calc(50% - 30px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .gallery-item {
+                flex-basis: calc(100% - 30px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="gallery-container">
+        <h1>Image Gallery</h1>
+        <div class="gallery-filter">
+            <button class="active" onclick="filterGallery('all')">All</button>
+            <button onclick="filterGallery('nature')">Nature</button>
+            <button onclick="filterGallery('city')">City</button>
+            <button onclick="filterGallery('animals')">Animals</button>
+        </div>
+
+        <div class="gallery">
+            <div class="gallery-item" data-category="nature">
+                <img src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0" alt="Nature Image 1">
+                <h3>Beautiful Nature</h3>
+            </div>
+            <div class="gallery-item" data-category="city">
+                <img src="https://images.unsplash.com/photo-1495231916356-a86217efff12" alt="City Image 1">
+                <h3>City View</h3>
+            </div>
+            <div class="gallery-item" data-category="animals">
+                <img src="https://images.unsplash.com/photo-1517849845537-4d257902454a" alt="Animals Image 1">
+                <h3>Wildlife</h3>
+            </div>
+            <div class="gallery-item" data-category="nature">
+                <img src="https://images.unsplash.com/photo-1502082553048-f009c37129b9" alt="Nature Image 2">
+                <h3>Nature Scene</h3>
+            </div>
+            <div class="gallery-item" data-category="city">
+                <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c" alt="City Image 2">
+                <h3>City Lights</h3>
+            </div>
+            <div class="gallery-item" data-category="animals">
+                <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006" alt="Animals Image 2">
+                <h3>Animal Kingdom</h3>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.gallery-filter button');
+
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            event.target.classList.add('active');
+
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

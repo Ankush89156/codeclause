@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Sharing Platform</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>File Sharing Platform</h1>
+        <form id="uploadForm">
+            <input type="file" id="fileInput" required>
+            <button type="submit">Upload File</button>
+        </form>
+        <div id="linkContainer" style="display:none;">
+            <p>File Uploaded! Share the link:</p>
+            <a id="fileLink" href="#" target="_blank"></a>
+        </div>
+        <div id="fileListContainer">
+            <h2>Uploaded Files:</h2>
+            <ul id="fileList"></ul>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
